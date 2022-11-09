@@ -218,6 +218,11 @@ func (m *ManagedNotification) CanBeSent(n string, firing bool) (bool, error) {
 			return false, err
 		}
 
+		// If resolved body is empty, do not send SL
+		if len(t.ResolvedDesc) < 0 {
+			return false, nil
+		}
+
 		// If alert is not firing, only firing status notification can be sent
 		firingStatus := s.Conditions.GetCondition(ConditionAlertFiring).Status
 		if firingStatus != corev1.ConditionTrue {
