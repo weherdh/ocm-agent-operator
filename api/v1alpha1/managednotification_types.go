@@ -218,8 +218,8 @@ func (m *ManagedNotification) CanBeSent(n string, firing bool) (bool, error) {
 			return false, err
 		}
 
-		// If resolved body is empty, do not send SL
-		if len(t.ResolvedDesc) < 0 {
+		// If resolved body is empty, do not send SL for resolved alert
+		if len(t.ResolvedDesc) == 0 {
 			return false, nil
 		}
 

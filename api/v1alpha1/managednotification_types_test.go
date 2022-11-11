@@ -117,7 +117,7 @@ var _ = Describe("OCMAgent Controller", func() {
 			Expect(t.Name).To(Equal(testNotificationName))
 			Expect(err).NotTo(HaveOccurred())
 		})
-		FIt("will return the correct notification if the resolve body is empty", func() {
+		It("will return the correct notification if the resolve body is empty", func() {
 			t, err := testManagedNotificationWrb.GetNotificationForName(testNotificationNameWrb)
 			Expect(t.Name).To(Equal(testNotificationNameWrb))
 			Expect(t.ResolvedDesc).To(Equal(""))
@@ -205,7 +205,7 @@ var _ = Describe("OCMAgent Controller", func() {
 		})
 
 		When("the resolved body is empty", func() {
-			FIt("will not send", func() {
+			It("will not send", func() {
 				cansend, err := testManagedNotificationWrb.CanBeSent(testNotificationNameWrb, false)
 				Expect(cansend).To(BeFalse())
 				Expect(err).To(BeNil())
